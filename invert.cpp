@@ -1,5 +1,5 @@
-#include "grayscale.h"
-image* grayscale::apply(image* img) {
+#include"invert.h"
+image* invert::apply(image*img){
     int red = 0;
     int blue = 0;
     int green = 0;
@@ -10,9 +10,11 @@ image* grayscale::apply(image* img) {
             red = currentpixel.getRed();
             green = currentpixel.getGreen();
             blue = currentpixel.getBlue();
-            newval = (red + blue + green) / 3;
+            newval=255-red;
             currentpixel.setRed(newval);
+            newval=255-green;
             currentpixel.setGreen(newval);
+            newval=255-blue;
             currentpixel.setBlue(newval);
         }
     }

@@ -1,7 +1,9 @@
+#pragma once
 #include"filter.h"
 #include"image.h"
+#include"pixel.h"
 class grayscale:public filter{
     public:
-    void apply(image img);
+    image* apply(image* img)override;
     ~grayscale();
 };
