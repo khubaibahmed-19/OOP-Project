@@ -1,5 +1,6 @@
-#include"invert.h"
-image* invert::apply(image*img){
+#include"brightness.h"
+image* brightness::apply(image* img,int brightness){
+    this->brighntess=brightness;
     int red = 0;
     int blue = 0;
     int green = 0;
@@ -10,14 +11,16 @@ image* invert::apply(image*img){
             red = currentpixel.getRed();
             green = currentpixel.getGreen();
             blue = currentpixel.getBlue();
-            newval=255-red;
+            newval=red+brighntess;
+            newval=currentpixel.clamp(newval);
             currentpixel.setRed(newval);
-            newval=255-green;
+            newval=green+brighntess;
+            newval=currentpixel.clamp(newval);
             currentpixel.setGreen(newval);
-            newval=255-blue;
+            newval=blue+brighntess;
+            newval=currentpixel.clamp(newval);
             currentpixel.setBlue(newval);
         }
     }
     return img;
-    
 }
