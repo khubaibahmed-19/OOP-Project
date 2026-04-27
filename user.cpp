@@ -21,3 +21,6 @@ string user::getCnic()const {
 string user::getName(){
     return name;
 }
+string user::getPassword(){
+    return password;
+}

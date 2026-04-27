@@ -9,4 +9,6 @@ int main(){
     }else{
         cout<<"Image not found";
     }
+    picture.displayASCII();
+    
 }

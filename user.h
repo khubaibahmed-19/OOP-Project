@@ -14,5 +14,6 @@ class user{
     bool checkPassword(string password);
     virtual int showMenu()=0;
     virtual string getRole()=0;
+    string getPassword();
     
 };

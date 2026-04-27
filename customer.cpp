@@ -1,8 +1,8 @@
 #include"customer.h"
 #include<iostream>
-customer::customer(string cnic, string name, string password, string r, string g, string c, string n):user(cnic, name, password){
-    role=r;
+customer::customer(string cnic, string name, string password, string g, string c, string n):user(cnic, name, password){
     gender=g;
+    isBlocked=false;
     city=c;
     number=n;
 }
@@ -20,9 +20,6 @@ int customer::showMenu(){
     cin>>choice;
     return choice;
 }
-string customer::getRole(){
-    return role;
-}
 void customer::BuildPipeline(){
     cout << "Available Filters:" << endl;
     cout << "01 Grayscale          [Pixel Transform]  Enabled" << endl;
@@ -38,4 +35,15 @@ void customer::BuildPipeline(){
     cout << "" << endl;
     cout << "Enter filter ID to add (0 to finish): ";
 }
-
+string customer::getCity(){
+    return city;
+}
+string customer::getPhone(){
+    return number;
+}
+string customer::getGender(){
+    return gender;
+}
+void customer::setBlocked(bool val){
+    isBlocked=val;
+}
