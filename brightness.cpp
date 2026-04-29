@@ -1,7 +1,8 @@
 #include"brightness.h"
-brightness::brightness(int ID, string name, bool isEnabled) : filter(ID, name, isEnabled) {}
-image* brightness::apply(image* img,int brightness){
-    this->brighntess=brightness;
+brightness::brightness(int ID, string name, bool isEnabled) : filter(ID, name, isEnabled) {
+    this->brighntess = 0;
+}
+image* brightness::apply(image* img){
     int red = 0;
     int blue = 0;
     int green = 0;

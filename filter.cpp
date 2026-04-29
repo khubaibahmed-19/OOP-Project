@@ -3,6 +3,7 @@ filter::filter(int ID,string name,bool IsEnabled){
     this->name=name;
     this->ID=ID;
     this->isEnabled=isEnabled;}
+filter::~filter(){}
 string filter::getName(){
     return name;
 }
