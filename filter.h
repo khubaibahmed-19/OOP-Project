@@ -7,7 +7,7 @@ class filter{
     int ID;
     bool isEnabled;
     public:
-    filter();
+    filter(int ID,string name,bool isEnabled);
     virtual ~filter();
     virtual image* apply(image* img) = 0;
     string getName();

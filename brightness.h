@@ -5,6 +5,7 @@
 class brightness:public filter{
     int brighntess;
     public:
+    brightness(int ID, string name, bool isEnabled);
     image * apply(image*img , int brightness);
     ~brightness();
 };

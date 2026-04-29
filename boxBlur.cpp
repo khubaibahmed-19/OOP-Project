@@ -1,5 +1,5 @@
 #include "boxBlur.h"
-boxBlur::boxBlur() {}
+boxBlur::boxBlur(int ID, string name, bool isEnabled) : filter(ID, name, isEnabled) {}
 boxBlur::~boxBlur() {}
 image* boxBlur::apply(image* img) {
     image* copy = new image(*img);

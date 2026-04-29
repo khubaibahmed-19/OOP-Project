@@ -1,5 +1,5 @@
 #include "flipVertical.h"
-flipVertical::flipVertical() {}
+flipVertical::flipVertical(int ID, string name, bool isEnabled) : filter(ID, name, isEnabled) {}
 flipVertical::~flipVertical() {}
 image* flipVertical::apply(image* img) {
     int w = img->getWidth();

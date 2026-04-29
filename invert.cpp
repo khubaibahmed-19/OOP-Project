@@ -1,4 +1,5 @@
 #include"invert.h"
+invert::invert(int ID, string name, bool isEnabled) : filter(ID, name, isEnabled) {}
 image* invert::apply(image*img){
     int red = 0;
     int blue = 0;

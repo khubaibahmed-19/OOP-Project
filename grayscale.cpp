@@ -1,4 +1,5 @@
 #include "grayscale.h"
+grayscale::grayscale(int ID, string name, bool isEnabled) : filter(ID, name, isEnabled) {}
 image* grayscale::apply(image* img) {
     int red = 0;
     int blue = 0;

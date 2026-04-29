@@ -2,7 +2,7 @@
 #include "filter.h"
 class flipHorizontal : public filter {
 public:
-    flipHorizontal();
+    flipHorizontal(int ID, string name, bool isEnabled);
     image* apply(image* img) override;
     ~flipHorizontal();
 };

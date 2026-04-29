@@ -2,7 +2,7 @@
 #include "filter.h"
 class blueChannel : public filter {
 public:
-    blueChannel();
+    blueChannel(int ID, string name, bool isEnabled);
     image* apply(image* img) override;
     ~blueChannel();
 };

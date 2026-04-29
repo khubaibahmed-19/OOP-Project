@@ -1,5 +1,5 @@
 #include "flipHorizontal.h"
-flipHorizontal::flipHorizontal() {}
+flipHorizontal::flipHorizontal(int ID, string name, bool isEnabled) : filter(ID, name, isEnabled) {}
 flipHorizontal::~flipHorizontal() {}
 image* flipHorizontal::apply(image* img) {
     int w = img->getWidth();

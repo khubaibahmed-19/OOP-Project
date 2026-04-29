@@ -1,4 +1,5 @@
 #include"stretch.h"
+stretch::stretch(int ID, string name, bool isEnabled) : filter(ID, name, isEnabled) {}
 image* stretch::apply(image* img){
     int max=255;
     int min=0;

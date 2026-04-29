@@ -1,5 +1,5 @@
 #include "redChannel.h"
-redChannel::redChannel() {}
+redChannel::redChannel(int ID, string name, bool isEnabled) : filter(ID, name, isEnabled) {}
 redChannel::~redChannel() {}
 image* redChannel::apply(image* img) {
     for (int i = 0; i < img->getHeight(); i++) {
