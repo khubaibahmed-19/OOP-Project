@@ -7,7 +7,7 @@ class user{
     string password;
     public:
     user();
-    user(string cnic,string name,string password);
+    user(string cnic, string password, string name);
     virtual ~ user();
     string getCnic() const;
     string getName();

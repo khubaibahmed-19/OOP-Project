@@ -1,0 +1,10 @@
+1|Grayscale|true
+2|Invert|true
+3|Brightness|false
+4|Stretch|true
+5|RedChannel|true
+6|GreenChannel|true
+7|BlueChannel|true
+8|BoxBlur|true
+9|FlipHorizontal|true
+10|FlipVertical|true

@@ -26,3 +26,7 @@ image* brightness::apply(image* img){
     }
     return img;
 }
+void brightness::setBrightness(int val) { brighntess = val; }
+brightness::~brightness(){
+
+}

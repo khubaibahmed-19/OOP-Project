@@ -78,8 +78,10 @@ bool image::save(string path) {
     return success; 
 }
 void image::displayASCII(){
-    for(int r=0;r<height;r++){
-        for(int c=0;c<width;c++){
+    int step=5;
+    cout<<"ASCII DISPLAY MADE SMALL FOR DISPLAY PURPOSES"<<endl;
+    for(int r=0;r<height;r=r+40){
+        for(int c=0;c<width;c=c+40){
            cout << images[r][c];
         }
         cout<<endl;

@@ -25,7 +25,7 @@ vector<customer> customerManager::loadAll(string filepath) {
         string phone    = fields[4];
         string city     = fields[5];
         bool isBlocked  = (fields[6] == "1");
-        customer c( cnic,  name,  password,  gender,  phone,  city);
+        customer c(cnic, password, name, gender, phone, city);
         if (isBlocked) c.setBlocked(true);
         customers.push_back(c);
     }
