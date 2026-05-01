@@ -2,7 +2,9 @@
 #include<string>
 #include"pixel.h"
 using namespace std;
+class filterSession;
 class image{
+    friend class filterSession;
     Pixel**images;
     int width;
     int height;

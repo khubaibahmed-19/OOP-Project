@@ -11,7 +11,7 @@ vector<filter*> catalogManager::loadCatalog(string filepath){
         int idx=0;
         string token="";
         for(int i=0;i<line.size();i++){
-            if(line[i]==' '){
+            if(line[i]=='|'){
                 fields[idx]=token;
                 token="";
                 idx++;
@@ -64,7 +64,7 @@ void catalogManager::saveCatalog(vector<filter*> filters, string filepath){
         }else{
             status = "false";
         }
-        file << filters[i]->getID() << " " << filters[i]->getName() << " " << status << endl;
+        file << filters[i]->getID() << "|" << filters[i]->getName() << "|" << status << endl;
     }
     file.close();
 }
@@ -84,7 +84,7 @@ void catalogManager::toggleFilter(vector<filter*>& filters, int id, bool v, stri
         }else{
             status = "false";
         }
-        file << filters[i]->getID() << " " << filters[i]->getName() << " " << status << endl;
+        file << filters[i]->getID() << "|" << filters[i]->getName() << "|" << status << endl;
     }
     file.close();
 }

@@ -1,24 +1,24 @@
 #pragma once
-#include"user.h"
-#include<string>
+#include "user.h"
+#include <string>
 using namespace std;
-class customer:public user{
+class customer : public user {
     string gender;
+    string phone;
     string city;
-    string number;
     bool isBlocked;
     int sessionCount;
-    public:
-    customer(string cnic, string name, string password, string g, string c, string n);
-    int showMenu () override;
-    string getRole();
-    void BuildPipeline();
-    void applyandSave();
-    void viewHistory();
-    bool isAccountBlocked();
-    string getCity();
-    string getPhone();
+public:
+    customer();
+    customer(string cnic, string password, string name, string gender, string phone, string city);
+    int showMenu() override;
+    string getRole() override;
     string getGender();
+    string getPhone();
+    string getCity();
+    bool isAccountBlocked();
     void setBlocked(bool val);
+    void incrementSession();
+    int getSessionCount();
     ~customer();
 };

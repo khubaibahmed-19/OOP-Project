@@ -2,7 +2,7 @@
 filter::filter(int ID,string name,bool IsEnabled){
     this->name=name;
     this->ID=ID;
-    this->isEnabled=isEnabled;}
+    this->isEnabled=IsEnabled;}
 filter::~filter(){}
 string filter::getName(){
     return name;

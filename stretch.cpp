@@ -31,4 +31,5 @@ image* stretch::apply(image* img){
             p.setRed(rNew);
         }
     }
+    return img;
 }
