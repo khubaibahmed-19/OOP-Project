@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include<fstream>
 #include <vector>
 #include <ctime>
 #include "image.h"
@@ -36,13 +35,9 @@ string getCurrentTimestamp() {
     strftime(buf, sizeof(buf), "%Y%m%d_%H%M%S", t);
     return string(buf);
 }
-void printLine() {
-    cout << "============================================" << endl;
-}
+
 void printBox(string title) {
-    printLine();
     cout << "   " << title << endl;
-    printLine();
 }
 void registerCustomer(customerManager& cm, vector<customer>& customers, blockedCnicManager& bcm) {
     printBox("CUSTOMER REGISTRATION");
@@ -218,36 +213,19 @@ void runCustomerPanel(customer* cust, vector<filter*>& filters) {
             if (session != nullptr) { delete session; session = nullptr; }
             string timestamp = getCurrentTimestamp();
             session = new filterSession(cust->getCnic(), timestamp);
-            cout << "1) Load from JPG/PNG file" << endl;
-            cout << "2) Generate test pattern" << endl;
-            cout << "Choice: ";
-            int imgChoice; cin >> imgChoice;
-            image* img = nullptr;
-            if (imgChoice == 1) {
-                cout << "Enter image path: ";
-                cin.ignore();
-                string path;
-                getline(cin, path);
-                img = new image(0, 0);
-                if (!img->loadfromFile(path)) {
-                    cout << "Failed to load image." << endl;
-                    delete img;
-                    delete session;
-                    session = nullptr;
-                    continue;
-                }
-                cout << "Image loaded: " << img->getWidth() << "x" << img->getHeight() << endl;
-            } else {
-                img = new image(20, 10);
-                for (int r = 0; r < 10; r++)
-                    for (int c = 0; c < 20; c++) {
-                        int val = (r * 20 + c) * 255 / 200;
-                        img->at(r, c).setRed(val);
-                        img->at(r, c).setGreen(val / 2);
-                        img->at(r, c).setBlue(255 - val);
-                    }
-                cout << "Test pattern generated: 20x10" << endl;
+            image* img = new image(0, 0);
+            cout << "Enter image path: ";
+            while(cin.get() != '\n');
+            string path;
+            getline(cin, path);
+            if (!img->loadfromFile(path)) {
+                cout << "Failed to load image." << endl;
+                delete img;
+                delete session;
+                session = nullptr;
+                continue;
             }
+            cout << "Image loaded: " << img->getWidth() << "x" << img->getHeight() << endl;
             session->setImage(img);
             imageLoaded = true;
             cout << "=== ASCII Preview ===" << endl;
@@ -365,6 +343,7 @@ int main() {
     blockedCnicManager bcm;
     vector<customer> customers = cm.loadAll(CUSTOMERS_FILE);
     vector<filter*> filters = catMgr.loadCatalog(CATALOG_FILE);
+    // If filters not in txt file initializes and creates new txt file
     if (filters.empty()) {
         filters.push_back(new grayscale(1, "Grayscale", true));
         filters.push_back(new invert(2, "Invert", true));
@@ -379,10 +358,9 @@ int main() {
         catMgr.saveCatalog(filters, CATALOG_FILE);
     }
     int choice;
+    // Displays main menu and calls function based on choice
     while (true) {
-        printLine();
         cout << "        IMAGE FILTER STUDIO" << endl;
-        printLine();
         cout << "1) Admin Login" << endl;
         cout << "2) Customer Login" << endl;
         cout << "3) New Customer? Register here" << endl;

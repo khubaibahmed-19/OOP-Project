@@ -38,6 +38,12 @@ int image::getWidth(){
     return width;
 }
 bool image::loadfromFile(string path) {
+    cout << "Path length: " << path.length() << endl;
+    cout << "Path: [" << path << "]" << endl;
+    for(int i = 0; i < path.length(); i++)
+        cout << (int)path[i] << " ";
+    cout << endl;
+    
 int fileW, fileH, channels;
 unsigned char* rawData = stbi_load(path.c_str(), &fileW, &fileH, &channels, 3);
 if (rawData == nullptr) return false;
@@ -78,12 +84,19 @@ bool image::save(string path) {
     return success; 
 }
 void image::displayASCII(){
-    int step=5;
     cout<<"ASCII DISPLAY MADE SMALL FOR DISPLAY PURPOSES"<<endl;
-    for(int r=0;r<height;r=r+40){
-        for(int c=0;c<width;c=c+40){
-           cout << images[r][c];
+    int maxRows = (height > 100) ? 100 : height;
+    int maxCols = (width > 100) ? 100 : width;
+    int rowStep = (height > 100) ? height / 100 : 1;
+    int colStep = (width > 100) ? width / 100 : 1;
+    
+    for(int r=0; r<height; r+=rowStep){
+        if(r >= maxRows * rowStep) break;
+        for(int c=0; c<width; c+=colStep){
+            if(c >= maxCols * colStep) break;
+            cout << images[r][c];
         }
         cout<<endl;
     }
+    cout<<"Image: "<<width<<"x"<<height<<" pixels"<<endl;
 }
